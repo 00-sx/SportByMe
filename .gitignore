@@ -26,9 +26,3 @@ bootstrap/cache/*.php
 *.sublime-project
 .DS_Store
 Thumbs.db
-
-# Composer / npm
-composer.lock
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
