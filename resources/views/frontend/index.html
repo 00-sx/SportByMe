@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport-By-Me - Uniendo Pasión y Desarrollo</title>
+    <link rel="stylesheet" href="css/style-home.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Sport-By-Me</a>
+            <div class="navbar-right">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="equipo.html">Equipo</a></li>
+                        <li><a href="categorias.html">Categorías</a></li>
+                        <li><a href="pagos.html">Pagos</a></li>
+                        <li><a href="horarios.html">Horarios</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="navbar-actions">
+                    <a href="https://wa.me/573125979278" target="_blank" class="btn-whatsapp">WHATSAPP</a>
+                    <button id="open-login-modal-btn" class="btn-login">Ingresar</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1>Uniendo pasión y desarrollo a través del deporte</h1>
+                <p>Nos dedicamos a inspirar y transformar vidas a través del poder del deporte, ofreciendo programas de alta calidad que fomentan el desarrollo integral y valores esenciales.</p>
+                <a href="contacto.html" class="btn">CONTÁCTANOS</a>
+            </div>
+        </section>
+        <section id="porque-elegirnos" class="section light-bg">
+            <div class="container">
+                <h2 class="section-title">¿Por qué elegirnos?</h2>
+                <div class="features-grid">
+                    <div class="feature-card"><div class="icon-wrapper">🏅</div><h3>Excelencia Deportiva</h3><p>Maximizamos el potencial de cada deportista.</p></div>
+                    <div class="feature-card"><div class="icon-wrapper">🌱</div><h3>Desarrollo Integral</h3><p>Fomentamos valores como la disciplina y la resiliencia.</p></div>
+                    <div class="feature-card"><div class="icon-wrapper">👥</div><h3>Inclusión y Comunidad</h3><p>Somos un espacio donde todos son bienvenidos.</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h3>Sport-By-Me</h3><p>Fomentamos el desarrollo deportivo integral.</p></div>
+                <div class="footer-col"><h3>Enlaces Rápidos</h3><ul><li><a href="nosotros.html">Nosotros</a></li><li><a href="equipo.html">Equipo</a></li><li><a href="categorias.html">Categorías</a></li></ul></div>
+                <div class="footer-col"><h3>Contacto</h3><p>Dirección: Calle Falsa 123, Bogotá<br>Email: info@sportbyme.com<br>Teléfono: +57 312 5979278</p></div>
+            </div>
+            <div class="footer-bottom"><p>Copyright © 2025 Sport-By-Me. Todos los derechos reservados.</p></div>
+        </div>
+    </footer>
+
+    <!-- 🔹 Modal de Login con roles -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Iniciar Sesión</h3>
+                <button id="close-login-modal-btn" class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="username" name="username" placeholder="Escribe tu usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Selecciona tu rol</label>
+                        <select id="role" name="role" required>
+                            <option value="">-- Selecciona --</option>
+                            <option value="admin">Administrador</option>
+                            <option value="entrenador">Entrenador</option>
+                            <option value="deportista">Deportista</option>
+                            <option value="acudiente">Acudiente</option>
+                        </select>
+                    </div>
+                    <div class="form-options">
+                        <a href="establecer_contrasena.html">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn-primary-modal">Ingresar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión Administrativa/Financiera - Administrador</title>
+  <link rel="stylesheet" href="../css/style-home.css" />
+  <link rel="stylesheet" href="../css/main-styles.css" />
+  <link rel="stylesheet" href="./css/admin-modules.css" />
+  <link rel="stylesheet" href="./css/finanzas.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h2>Administrador - Gestión Financiera</h2>
+    <a href="../index.html" class="btn-logout">Cerrar sesión</a>
+  </header>
+
+  <main class="dashboard">
+    <aside class="sidebar">
+      <h3>Módulos</h3>
+      <ul>
+        <li><a href="./usuarios.html">Gestión de Usuarios</a></li>
+        <li><a href="./equipos.html">Gestión de Equipos y Categorías</a></li>
+        <li><a href="./entrenamientos.html">Gestión de Entrenamientos</a></li>
+        <li><a href="./competiciones.html">Competiciones y Torneos</a></li>
+        <li><a href="./academico.html">Gestión Académica/Deportiva</a></li>
+        <li><a class="active" href="./finanzas.html">Gestión Administrativa/Financiera</a></li>
+        <li><a href="./reportes.html">Reportes y Estadísticas</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <h3>Pagos y Facturación</h3>
+          <p>Control de pagos, reportes financieros y generación de facturas.</p>
+        </div>
+        <div class="actions">
+          <button id="btnNuevoPago" class="btn primary">+ Registrar Pago</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="form-group">
+          <label for="filtroPeriodo">Periodo</label>
+          <select id="filtroPeriodo">
+            <option value="">Todos</option>
+            <option value="2025-09">Septiembre 2025</option>
+            <option value="2025-08">Agosto 2025</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="filtroEstadoPago">Estado</label>
+          <select id="filtroEstadoPago">
+            <option value="">Todos</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Pagado">Pagado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button id="btnExportarPagos" class="btn">Exportar CSV</button>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h4>Pagos</h4>
+        <div class="table-wrapper">
+          <table id="tablaPagos" class="table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Fecha</th>
+                <th>Deportista</th>
+                <th>Concepto</th>
+                <th>Periodo</th>
+                <th>Monto</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h4>Resumen</h4>
+        <div class="table-wrapper">
+          <table id="tablaResumen" class="table">
+            <thead>
+              <tr>
+                <th>Periodo</th>
+                <th>Ingresos</th>
+                <th>Pendiente</th>
+                <th># Pagos</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modal Pago -->
+      <div id="modalPago" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalPagoTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalPagoTitulo">Registrar Pago</h4>
+            <button id="cerrarModalPago" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <form id="formPago" class="modal-body" novalidate>
+            <input type="hidden" id="pagoId" />
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="fechaPago">Fecha</label>
+                <input type="date" id="fechaPago" required />
+              </div>
+              <div class="form-group">
+                <label for="deportistaPago">Deportista</label>
+                <select id="deportistaPago" required></select>
+              </div>
+              <div class="form-group">
+                <label for="conceptoPago">Concepto</label>
+                <select id="conceptoPago">
+                  <option value="Mensualidad">Mensualidad</option>
+                  <option value="Uniforme">Uniforme</option>
+                  <option value="Inscripción">Inscripción</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="periodoPago">Periodo</label>
+                <input type="month" id="periodoPago" />
+              </div>
+              <div class="form-group">
+                <label for="montoPago">Monto</label>
+                <input type="number" id="montoPago" min="0" step="1000" value="80000" />
+              </div>
+              <div class="form-group">
+                <label for="estadoPago">Estado</label>
+                <select id="estadoPago">
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="Pagado">Pagado</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn" id="btnCancelarPago">Cancelar</button>
+              <button type="submit" class="btn primary" id="btnGuardarPago">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal Confirmación común -->
+      <div id="modalConfirm" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalConfirmTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalConfirmTitulo">Confirmar</h4>
+            <button id="cerrarModalConfirm" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <div class="modal-body">
+            <p id="modalConfirmMensaje">¿Está seguro?</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn" id="btnCancelarConfirm">Cancelar</button>
+            <button type="button" class="btn danger" id="btnAceptarConfirm">Eliminar</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <noscript>Para utilizar este módulo es necesario habilitar JavaScript.</noscript>
+
+  <script src="./js/admin-common.js"></script>
+  <script src="./js/finanzas.js"></script>
+</body>
+</html>

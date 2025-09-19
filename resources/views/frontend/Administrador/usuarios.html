@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Usuarios - Administrador</title>
+  <link rel="stylesheet" href="../css/style-home.css" />
+  <link rel="stylesheet" href="../css/main-styles.css" />
+  <link rel="stylesheet" href="./css/admin-modules.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h2>Administrador - Gestión de Usuarios</h2>
+    <a href="../index.html" class="btn-logout">Cerrar sesión</a>
+  </header>
+
+  <main class="dashboard">
+    <aside class="sidebar">
+      <h3>Módulos</h3>
+      <ul>
+        <li><a class="active" href="./usuarios.html">Gestión de Usuarios</a></li>
+        <li><a href="./equipos.html">Gestión de Equipos y Categorías</a></li>
+        <li><a href="./entrenamientos.html">Gestión de Entrenamientos</a></li>
+        <li><a href="./competiciones.html">Competiciones y Torneos</a></li>
+        <li><a href="./academico.html">Gestión Académica/Deportiva</a></li>
+        <li><a href="./finanzas.html">Gestión Administrativa/Financiera</a></li>
+        <li><a href="./reportes.html">Reportes y Estadísticas</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <h3>Usuarios del Sistema</h3>
+          <p>Administra cuentas, roles y credenciales de acceso.</p>
+        </div>
+        <div class="actions">
+          <button id="btnNuevoUsuario" class="btn primary">+ Nuevo Usuario</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="form-group">
+          <label for="filtroRol">Rol</label>
+          <select id="filtroRol">
+            <option value="">Todos</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Entrenador">Entrenador</option>
+            <option value="Deportista">Deportista</option>
+            <option value="Acudiente">Acudiente</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="buscarUsuario">Buscar</label>
+          <input type="text" id="buscarUsuario" placeholder="Nombre, documento o email" />
+        </div>
+        <div class="form-group">
+          <label for="filtroEstado">Estado</label>
+          <select id="filtroEstado">
+            <option value="">Todos</option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button id="btnExportarUsuarios" class="btn">Exportar CSV</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="tablaUsuarios" class="table">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th>Email</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filas generadas por JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal Crear/Editar Usuario -->
+      <div id="modalUsuario" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalUsuarioTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalUsuarioTitulo">Nuevo Usuario</h4>
+            <button id="cerrarModalUsuario" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <form id="formUsuario" novalidate>
+            <input type="hidden" id="usuarioId" />
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" required />
+                <small class="error" data-error-for="nombres"></small>
+              </div>
+              <div class="form-group">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" required />
+                <small class="error" data-error-for="apellidos"></small>
+              </div>
+              <div class="form-group">
+                <label for="documento">Documento</label>
+                <input type="text" id="documento" required />
+                <small class="error" data-error-for="documento"></small>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" />
+                <small class="error" data-error-for="telefono"></small>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required />
+                <small class="error" data-error-for="email"></small>
+              </div>
+              <div class="form-group">
+                <label for="rol">Rol</label>
+                <select id="rol" required>
+                  <option value="">Seleccione</option>
+                  <option value="Administrador">Administrador</option>
+                  <option value="Entrenador">Entrenador</option>
+                  <option value="Deportista">Deportista</option>
+                  <option value="Acudiente">Acudiente</option>
+                </select>
+                <small class="error" data-error-for="rol"></small>
+              </div>
+              <div class="form-group">
+                <label for="username">Usuario (login)</label>
+                <input type="text" id="username" required />
+                <small class="error" data-error-for="username"></small>
+              </div>
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="estado" required>
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                </select>
+                <small class="error" data-error-for="estado"></small>
+              </div>
+            </div>
+
+            <fieldset class="fieldset">
+              <legend>Credenciales</legend>
+              <div class="grid-2">
+                <div class="form-group">
+                  <label for="password">Contraseña</label>
+                  <input type="password" id="password" />
+                  <small class="hint">Requerida solo al crear o al restablecer.</small>
+                  <small class="error" data-error-for="password"></small>
+                </div>
+                <div class="form-group">
+                  <label for="confirmPassword">Confirmar contraseña</label>
+                  <input type="password" id="confirmPassword" />
+                  <small class="error" data-error-for="confirmPassword"></small>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="modal-actions">
+              <button type="button" class="btn" id="btnCancelarUsuario">Cancelar</button>
+              <button type="submit" class="btn primary" id="btnGuardarUsuario">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal Confirmación genérico -->
+      <div id="modalConfirm" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalConfirmTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalConfirmTitulo">Confirmar</h4>
+            <button id="cerrarModalConfirm" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <div class="modal-body">
+            <p id="modalConfirmMensaje">¿Está seguro?</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn" id="btnCancelarConfirm">Cancelar</button>
+            <button type="button" class="btn danger" id="btnAceptarConfirm">Eliminar</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <noscript>
+    Para utilizar la gestión de usuarios es necesario habilitar JavaScript.
+  </noscript>
+
+  <script src="./js/admin-common.js"></script>
+  <script src="./js/usuarios.js"></script>
+</body>
+</html>

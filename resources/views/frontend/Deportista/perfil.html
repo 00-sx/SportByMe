@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deportista - Perfil Personal</title>
+  <link rel="stylesheet" href="../css/style-home.css" />
+  <link rel="stylesheet" href="../css/main-styles.css" />
+  <link rel="stylesheet" href="./css/player-modules.css" />
+  <link rel="stylesheet" href="./css/player-perfil.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h2>Deportista - Mi Perfil</h2>
+    <a href="../index.html" class="btn-logout">Cerrar sesión</a>
+  </header>
+
+  <main class="dashboard">
+    <aside class="sidebar">
+      <h3>Módulos</h3>
+      <ul>
+        <li><a class="active" href="./perfil.html">Perfil Personal</a></li>
+        <li><a href="./calendario.html">Entrenamientos y Partidos</a></li>
+        <li><a href="./rendimiento.html">Rendimiento y Progreso</a></li>
+        <li><a href="./comunicaciones.html">Comunicaciones</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <h3>Información y Estadísticas</h3>
+          <p>Consulta tus datos y actualiza información básica.</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h4>Mi Información</h4>
+        <form id="formPerfil" class="filters" novalidate>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" />
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <input type="text" id="categoria" disabled />
+          </div>
+          <div class="form-group">
+            <label for="posicion">Posición</label>
+            <input type="text" id="posicion" />
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" />
+          </div>
+          <div class="form-group" style="align-self:flex-end;">
+            <button class="btn primary" id="btnGuardar">Guardar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h4>Estadísticas</h4>
+        <div class="table-wrapper">
+          <table class="table" id="tablaStats">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <noscript>Habilita JavaScript para gestionar tu perfil.</noscript>
+
+  <script src="../Administrador/js/admin-common.js"></script>
+  <script src="./js/player-perfil.js"></script>
+</body>
+</html>
