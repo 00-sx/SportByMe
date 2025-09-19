@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Sport-By-Me</title>
+    <link rel="stylesheet" href="css/style-home.css">
+    <style>.contact-container{display:grid;grid-template-columns:1fr 1fr;gap:50px}.contact-form .form-group{margin-bottom:20px}.contact-form label{display:block;margin-bottom:8px;font-weight:600;color:#555}.contact-form input,.contact-form textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:5px;font-size:16px;font-family:'Montserrat',sans-serif}.contact-info-item{display:flex;align-items:center;margin-bottom:20px}.contact-info-item .icon{font-size:24px;color:var(--primary-blue);margin-right:15px;width:30px;}@media (max-width:768px){.contact-container{grid-template-columns:1fr}}</style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="login.html" class="logo">Sport-By-Me</a>
+            <div class="navbar-right">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="equipo.html">Equipo</a></li>
+                        <li><a href="categorias.html">Categorías</a></li>
+                        <li><a href="pagos.html">Pagos</a></li>
+                        <li><a href="horarios.html">Horarios</a></li>
+                        <li><a href="contacto.html" class="active">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="navbar-actions">
+                    <a href="https://wa.me/573125979278" target="_blank" class="btn-whatsapp">WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Ponte en Contacto</h1>
+                <p>¿Listo para unirte? Envíanos tu solicitud o resuelve tus dudas.</p>
+            </div>
+        </section>
+
+        <section class="section light-bg">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <h2 style="color: var(--primary-blue); margin-bottom: 20px;">Envíanos tu Solicitud</h2>
+                        <form>
+                            <div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" required></div>
+                            <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+                            <div class="form-group"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="5" required></textarea></div>
+                            <button type="submit" class="btn">ENVIAR</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h2 style="color: var(--primary-blue); margin-bottom: 20px;">Nuestros Datos</h2>
+                        <div class="contact-info-item"><span class="icon">📍</span><div><strong>Dirección</strong><br>Calle Falsa 123, Bogotá, Colombia</div></div>
+                        <div class="contact-info-item"><span class="icon">✉️</span><div><strong>Email</strong><br>info@sportbyme.com</div></div>
+                        <div class="contact-info-item"><span class="icon">📞</span><div><strong>Teléfono</strong><br>+57 312 5979278</div></div>
+                        <div style="margin-top: 20px;"><iframesrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15906.35338661732!2d-74.083893!3d4.601958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a1a36a8e1f%3A0x7a3a3b5a7b5a7b5a!2sBogot%C3%A1!5e0!3m2!1ses!2sco" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframesrc=></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h3>Sport-By-Me</h3><p>Fomentamos el desarrollo deportivo integral.</p></div>
+                <div class="footer-col"><h3>Enlaces Rápidos</h3><ul><li><a href="nosotros.html">Nosotros</a></li><li><a href="equipo.html">Equipo</a></li><li><a href="categorias.html">Categorías</a></li></ul></div>
+                <div class="footer-col"><h3>Contacto</h3><p>Dirección: Calle Falsa 123, Bogotá<br>Email: info@sportbyme.com<br>Teléfono: +57 312 5979278</p></div>
+            </div>
+            <div class="footer-bottom"><p>Copyright © 2025 Sport-By-Me. Todos los derechos reservados.</p></div>
+        </div>
+    </footer>
+
+</body>
+</html>

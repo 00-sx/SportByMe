@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deportista - Rendimiento y Progreso</title>
+  <link rel="stylesheet" href="../css/style-home.css" />
+  <link rel="stylesheet" href="../css/main-styles.css" />
+  <link rel="stylesheet" href="./css/player-modules.css" />
+  <link rel="stylesheet" href="./css/player-rendimiento.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h2>Deportista - Rendimiento</h2>
+    <a href="../index.html" class="btn-logout">Cerrar sesión</a>
+  </header>
+
+  <main class="dashboard">
+    <aside class="sidebar">
+      <h3>Módulos</h3>
+      <ul>
+        <li><a href="./perfil.html">Perfil Personal</a></li>
+        <li><a href="./calendario.html">Entrenamientos y Partidos</a></li>
+        <li><a class="active" href="./rendimiento.html">Rendimiento y Progreso</a></li>
+        <li><a href="./comunicaciones.html">Comunicaciones</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <h3>Observaciones y Estadísticas</h3>
+          <p>Consulta tus observaciones y métricas de rendimiento.</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h4>Observaciones del Entrenador</h4>
+        <div class="table-wrapper">
+          <table class="table" id="tablaObs">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Detalle</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h4>Estadísticas de Rendimiento</h4>
+        <div class="table-wrapper">
+          <table class="table" id="tablaStats">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <noscript>Habilita JavaScript para ver tu rendimiento.</noscript>
+
+  <script src="../Administrador/js/admin-common.js"></script>
+  <script src="./js/player-rendimiento.js"></script>
+</body>
+</html>

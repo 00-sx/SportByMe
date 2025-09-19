@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión Académica/Deportiva - Administrador</title>
+  <link rel="stylesheet" href="../css/style-home.css" />
+  <link rel="stylesheet" href="../css/main-styles.css" />
+  <link rel="stylesheet" href="./css/admin-modules.css" />
+  <link rel="stylesheet" href="./css/academico.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h2>Administrador - Gestión Académica/Deportiva</h2>
+    <a href="../index.html" class="btn-logout">Cerrar sesión</a>
+  </header>
+
+  <main class="dashboard">
+    <aside class="sidebar">
+      <h3>Módulos</h3>
+      <ul>
+        <li><a href="./usuarios.html">Gestión de Usuarios</a></li>
+        <li><a href="./equipos.html">Gestión de Equipos y Categorías</a></li>
+        <li><a href="./entrenamientos.html">Gestión de Entrenamientos</a></li>
+        <li><a href="./competiciones.html">Competiciones y Torneos</a></li>
+        <li><a class="active" href="./academico.html">Gestión Académica/Deportiva</a></li>
+        <li><a href="./finanzas.html">Gestión Administrativa/Financiera</a></li>
+        <li><a href="./reportes.html">Reportes y Estadísticas</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <h3>Asistencia y Rendimiento</h3>
+          <p>Registra asistencia y evaluaciones por jugador o equipo.</p>
+        </div>
+        <div class="actions">
+          <button id="btnNuevaAsistencia" class="btn primary">+ Registrar Asistencia</button>
+          <button id="btnNuevaEvaluacion" class="btn">+ Nueva Evaluación</button>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h4>Asistencia</h4>
+        <div class="filters">
+          <div class="form-group">
+            <label for="filtroEquipoAsis">Equipo</label>
+            <select id="filtroEquipoAsis"><option value="">Todos</option></select>
+          </div>
+          <div class="form-group">
+            <label for="filtroFechaAsis">Fecha</label>
+            <input type="date" id="filtroFechaAsis" />
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table id="tablaAsistencia" class="table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Equipo</th>
+                <th>Deportista</th>
+                <th>Asistió</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h4>Evaluaciones de Rendimiento</h4>
+        <div class="filters">
+          <div class="form-group">
+            <label for="filtroEquipoEval">Equipo</label>
+            <select id="filtroEquipoEval"><option value="">Todos</option></select>
+          </div>
+          <div class="form-group">
+            <label for="filtroJugadorEval">Jugador</label>
+            <select id="filtroJugadorEval"><option value="">Todos</option></select>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table id="tablaEvaluaciones" class="table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Equipo</th>
+                <th>Jugador</th>
+                <th>Físico</th>
+                <th>Técnico</th>
+                <th>Táctico</th>
+                <th>Psicológico</th>
+                <th>Promedio</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modal Asistencia -->
+      <div id="modalAsistencia" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalAsistenciaTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalAsistenciaTitulo">Registrar Asistencia</h4>
+            <button id="cerrarModalAsistencia" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <form id="formAsistencia" class="modal-body" novalidate>
+            <input type="hidden" id="asistenciaId" />
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="fechaAsistencia">Fecha</label>
+                <input type="date" id="fechaAsistencia" required />
+              </div>
+              <div class="form-group">
+                <label for="equipoAsistencia">Equipo</label>
+                <select id="equipoAsistencia" required></select>
+              </div>
+              <div class="form-group">
+                <label for="jugadorAsistencia">Deportista</label>
+                <select id="jugadorAsistencia" required></select>
+              </div>
+              <div class="form-group">
+                <label for="asistio">Asistió</label>
+                <select id="asistio">
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn" id="btnCancelarAsistencia">Cancelar</button>
+              <button type="submit" class="btn primary" id="btnGuardarAsistencia">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal Evaluación -->
+      <div id="modalEvaluacion" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalEvaluacionTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalEvaluacionTitulo">Nueva Evaluación</h4>
+            <button id="cerrarModalEvaluacion" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <form id="formEvaluacion" class="modal-body" novalidate>
+            <input type="hidden" id="evaluacionId" />
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="fechaEvaluacion">Fecha</label>
+                <input type="date" id="fechaEvaluacion" required />
+              </div>
+              <div class="form-group">
+                <label for="equipoEvaluacion">Equipo</label>
+                <select id="equipoEvaluacion" required></select>
+              </div>
+              <div class="form-group">
+                <label for="jugadorEvaluacion">Jugador</label>
+                <select id="jugadorEvaluacion" required></select>
+              </div>
+              <div class="form-group">
+                <label for="fisico">Físico (1-5)</label>
+                <input type="number" id="fisico" min="1" max="5" value="3" />
+              </div>
+              <div class="form-group">
+                <label for="tecnico">Técnico (1-5)</label>
+                <input type="number" id="tecnico" min="1" max="5" value="3" />
+              </div>
+              <div class="form-group">
+                <label for="tactico">Táctico (1-5)</label>
+                <input type="number" id="tactico" min="1" max="5" value="3" />
+              </div>
+              <div class="form-group">
+                <label for="psicologico">Psicológico (1-5)</label>
+                <input type="number" id="psicologico" min="1" max="5" value="3" />
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn" id="btnCancelarEvaluacion">Cancelar</button>
+              <button type="submit" class="btn primary" id="btnGuardarEvaluacion">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal Confirmación común -->
+      <div id="modalConfirm" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalConfirmTitulo">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="modalConfirmTitulo">Confirmar</h4>
+            <button id="cerrarModalConfirm" class="btn icon" aria-label="Cerrar">✕</button>
+          </div>
+          <div class="modal-body">
+            <p id="modalConfirmMensaje">¿Está seguro?</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn" id="btnCancelarConfirm">Cancelar</button>
+            <button type="button" class="btn danger" id="btnAceptarConfirm">Eliminar</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <noscript>Para utilizar este módulo es necesario habilitar JavaScript.</noscript>
+
+  <script src="./js/admin-common.js"></script>
+  <script src="./js/academico.js"></script>
+</body>
+</html>

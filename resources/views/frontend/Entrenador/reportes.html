@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrenador - Reportes</title>
+  <link rel="stylesheet" href="../css/style-home.css" />
+  <link rel="stylesheet" href="../css/main-styles.css" />
+  <link rel="stylesheet" href="./css/coach-modules.css" />
+  <link rel="stylesheet" href="./css/coach-reportes.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h2>Entrenador - Reportes</h2>
+    <a href="../index.html" class="btn-logout">Cerrar sesión</a>
+  </header>
+
+  <main class="dashboard">
+    <aside class="sidebar">
+      <h3>Módulos</h3>
+      <ul>
+        <li><a href="./entrenamientos.html">Gestión de Entrenamientos</a></li>
+        <li><a href="./jugadores.html">Gestión de Jugadores</a></li>
+        <li><a href="./partidos.html">Gestión de Partidos</a></li>
+        <li><a href="./comunicacion.html">Comunicación</a></li>
+        <li><a class="active" href="./reportes.html">Reportes</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <h3>Reportes de Progreso</h3>
+          <p>Indicadores individuales y grupales del equipo.</p>
+        </div>
+        <div class="actions">
+          <button id="btnExportar" class="btn">Exportar CSV</button>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h4>Filtros</h4>
+        <div class="filters">
+          <div class="form-group">
+            <label for="filtroTipo">Tipo</label>
+            <select id="filtroTipo">
+              <option value="Grupal">Grupal</option>
+              <option value="Individual">Individual</option>
+            </select>
+          </div>
+          <div class="form-group" id="contenedorSelect">
+            <!-- Select dinámico -->
+          </div>
+          <div class="form-group">
+            <label for="filtroDesde">Desde</label>
+            <input type="date" id="filtroDesde" />
+          </div>
+          <div class="form-group">
+            <label for="filtroHasta">Hasta</label>
+            <input type="date" id="filtroHasta" />
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h4>KPIs</h4>
+        <div id="kpis" class="kpis"></div>
+      </section>
+
+      <section class="panel">
+        <h4>Detalle</h4>
+        <div class="table-wrapper">
+          <table id="tablaDetalle" class="table">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody><!-- JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <noscript>Habilita JavaScript para visualizar reportes.</noscript>
+
+  <script src="../Administrador/js/admin-common.js"></script>
+  <script src="./js/coach-reportes.js"></script>
+</body>
+</html>

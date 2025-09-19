@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Establecer Contraseña - Sport-By-Me</title>
+    <!-- Usamos la misma hoja de estilos para coherencia visual -->
+    <link rel="stylesheet" href="css/style-home.css"> 
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--light-bg);
+        }
+        .auth-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .auth-container .logo {
+            font-size: 28px;
+            font-weight: 800; /* Coincide con el logo principal */
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        .auth-container h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        .auth-container p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+        .auth-form .form-group {
+            text-align: left;
+        }
+        .auth-form .btn { /* Usamos la clase 'btn' que ya existe */
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: var(--white-color);
+            border: 2px solid var(--primary-blue);
+        }
+        .auth-form .btn:hover {
+            background-color: var(--white-color);
+            color: var(--primary-blue);
+        }
+        #error-message {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="logo">Sport-By-Me</div>
+        <h2>Establecer Contraseña</h2>
+        <p>Este es el último paso para activar tu cuenta. Por favor, crea una contraseña segura.</p>
+
+        <form id="set-password-form" class="auth-form">
+            <div id="error-message"></div>
+            <div class="form-group">
+                <label for="new_password">Nueva Contraseña:</label>
+                <input type="password" id="new_password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirmar Nueva Contraseña:</label>
+                <input type="password" id="confirm_password" required>
+            </div>
+            <button type="submit" class="btn">Guardar y Acceder</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('set-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const errorMessageDiv = document.getElementById('error-message');
+
+            errorMessageDiv.style.display = 'none';
+            errorMessageDiv.textContent = '';
+
+            if (newPassword.length < 8) {
+                errorMessageDiv.textContent = 'La contraseña debe tener al menos 8 caracteres.';
+                errorMessageDiv.style.display = 'block';
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                errorMessageDiv.textContent = 'Las contraseñas no coinciden.';
+                errorMessageDiv.style.display = 'block';
+                return;
+            }
+
+            alert('¡Contraseña establecida con éxito! Serás redirigido para que inicies sesión.');
+            
+            // Redirige a la página de inicio, que es la que tiene el modal de login.
+            window.location.href = 'index.html'; 
+        });
+    </script>
+
+</body>
+</html>
