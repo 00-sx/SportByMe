@@ -1,5 +1,0 @@
-/* KPIs coach */
-.kpis{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem;}
-.kpi-card{border:1px solid var(--border); border-radius:8px; background:#fff; padding:1rem;}
-.kpi-title{color:var(--muted); font-size:.9rem;}
-.kpi-value{font-size:1.6rem; font-weight:600; margin-top:.25rem;}
